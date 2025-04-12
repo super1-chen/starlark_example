@@ -12,10 +12,8 @@ jobs:
     steps:
       - name: Setup Bazel
         uses: abhinavsingh/setup-bazel@v3
-      - name: Use Bazel (Windows only)
-        if: matrix.os == 'windows'
-        run: ./bazel.exe -h
-      - name: Use Bazel
+      - name: Bazel Build
         if: matrix.os != 'windows'
-        run: bazel -h
-  
+        run: bazel build //...
+      - name: Bazel Test
+        run: bazel test //...
