@@ -38,5 +38,13 @@ bazel test project/calculator:calculator_test
 这个`calculator_test.py`  需要加上 main 入口
 
 ```python
+import unittest
 
+class SameTestCase(unittest.TestCase):
+    def test_xxx(self):
+        # todo some
+        pass
+
+if __name__ == "__main__":
+    unittest.main()
 ```
