@@ -10,8 +10,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - uses: abhinavsingh/setup-bazel@v3
       - name: Setup Bazel
-        uses: abhinavsingh/setup-bazel@v3
+        uses: ./
       - name: Bazel Build
         if: matrix.os != 'windows'
         run: bazel build //...
