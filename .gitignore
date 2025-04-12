@@ -1,4 +1,4 @@
 .eclipse
 .vscode
 bazel-*
-__pycache__
+__pycache__/
