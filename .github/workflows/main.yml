@@ -1,0 +1,21 @@
+name: CI
+
+on:
+ push:
+   branches: [ main ]
+ pull_request:
+   branches:
+   - main
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Bazel
+        uses: abhinavsingh/setup-bazel@v3
+      - name: Use Bazel (Windows only)
+        if: matrix.os == 'windows'
+        run: ./bazel.exe -h
+      - name: Use Bazel
+        if: matrix.os != 'windows'
+        run: bazel -h
+  
