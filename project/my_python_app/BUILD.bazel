@@ -1,0 +1,26 @@
+load("@my_deps//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "main",
+    srcs = ["main.py"],
+    deps = [
+        "//project/calculator:calculator",
+        requirement("Flask")
+    ],
+)
+
+py_library(
+    name = "load_template",
+    deps = [requirement("Jinja2")],
+    srcs = ["load_template.py"],
+    data = ["template/data.j2"],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "load_template_test",
+    deps = ["load_template"],
+    srcs = ["load_template_test.py"],
+    data = ["template/data.j2"],
+    size = "small"
+)
